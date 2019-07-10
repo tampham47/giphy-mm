@@ -8,6 +8,9 @@ const Main = styled.div`
   img {
     width: 100%;
   }
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 class GiphyItem extends React.Component {

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import GiphyList from './GiphyList';
+import { ReactComponent as Giftify } from './imgs/gif.svg';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -24,9 +25,11 @@ const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
 `;
-const Title = styled.h1`
+const Header = styled.h1`
   margin-top: 2em;
   margin-bottom: 2em;
+  display: flex;
+  align-items: center;
 `;
 const Footer = styled.footer`
   margin-top: 8em;
@@ -40,7 +43,7 @@ function App() {
     <>
       <GlobalStyle />
       <Container>
-        <Title>GiftifyMM</Title>
+        <Header><Giftify height="50" width="50" />tifymm</Header>
       </Container>
 
       <Container>
