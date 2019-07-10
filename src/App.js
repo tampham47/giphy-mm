@@ -26,10 +26,14 @@ const Container = styled.div`
   margin-right: auto;
 `;
 const Header = styled.h1`
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
   display: flex;
   align-items: center;
+  @media screen and (min-width: 600px) {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
 `;
 const Footer = styled.footer`
   margin-top: 8em;

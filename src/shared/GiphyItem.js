@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import GiphyImg from './GiphyImg';
 
 const Main = styled.div`
   width: 100%;
@@ -25,11 +26,10 @@ class GiphyItem extends React.Component {
 
   render() {
     const { model } = this.props;
-    const img = model.images['downsized_still'];
 
     return (
       <Main onClick={this.onClick}>
-        <img src={img.url} alt={model.title}/>
+        <GiphyImg model={model} />
       </Main>
     );
   }

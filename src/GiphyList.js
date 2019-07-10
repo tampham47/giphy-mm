@@ -121,7 +121,7 @@ class GiphyList extends React.Component {
           <Modal onClose={this.removeSelectedImg}
             width={selectedImg.images.original.width}
           >
-            <GiphyImg model={selectedImg} />
+            <GiphyImg model={selectedImg} isAutoLoad />
           </Modal>
         )}
       </Main>
