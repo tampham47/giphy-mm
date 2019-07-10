@@ -1,6 +1,6 @@
 import React from 'react';
-import styled, { createGlobalStyle, keyframes } from 'styled-components';
-import logo from './logo.svg';
+import styled, { createGlobalStyle } from 'styled-components';
+import GiphyList from './GiphyList';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -18,55 +18,21 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const logoSpin = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`;
-
-const Main = styled.div`
-  text-align: center;
-`;
-const Header = styled.header`
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-`;
-const Logo = styled.img`
-  animation: ${logoSpin} infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-`;
-const Link = styled.a`
-  color: #61dafb;
+const Container = styled.div`
+  max-width: 56em;
+  width: calc(100% - 2em);
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 function App() {
   return (
-    <Main>
+    <>
       <GlobalStyle />
-      <Header>
-        <Logo src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Link
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </Link>
-      </Header>
-    </Main>
+      <Container>
+        <GiphyList/>
+      </Container>
+    </>
   );
 }
 
