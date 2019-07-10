@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Modal from './Modal';
-import GiphyItem from './GiphyItem';
+import Modal from './shared/Modal';
+import GiphyItem from './shared/GiphyItem';
+import Button from './shared/Button';
 
 const Main = styled.section`
   margin-top: 2em;
@@ -22,6 +23,9 @@ const Item = styled.div`
   @media screen and (min-width: 900px) {
     width: 25%;
   }
+`;
+const BtnWrapper = styled.div`
+  text-align: center;
 `;
 
 const API_ENDPOINT = 'https://api.giphy.com/v1/gifs/trending';
@@ -44,24 +48,48 @@ class GiphyList extends React.Component {
     this.state = {
       giphyList: [],
       selectedImg: null,
+      busy: false,
+      page: 0,
     };
+
     this.setSelectedImg = this.setSelectedImg.bind(this);
     this.removeSelectedImg = this.removeSelectedImg.bind(this);
+    this.fetchGiphyByPage = this.fetchGiphyByPage.bind(this);
+    this.loadNextPage = this.loadNextPage.bind(this);
   }
 
   componentDidMount() {
+    this.fetchGiphyByPage(0);
+  }
+
+  fetchGiphyByPage(page) {
+    if (this.state.busy) {
+      return;
+    }
+
     const payload = {
       api_key: API_KEY,
-      offset: 0,
+      offset: page * ELEMENT_PAGE,
       limit: ELEMENT_PAGE,
       rating: 'G',
     };
 
+    this.setState({ busy: true });
     fetch(`${API_ENDPOINT}?${getQueryFromParams(payload)}`)
       .then(res => res.json())
       .then(body => {
-        this.setState({ giphyList: body.data });
+        const { giphyList } = this.state;
+        this.setState({
+          giphyList: giphyList.concat(body.data),
+          page,
+          busy: false,
+        });
       });
+  }
+
+  loadNextPage() {
+    const { page } = this.state;
+    this.fetchGiphyByPage(page + 1);
   }
 
   setSelectedImg(giphy) {
@@ -72,7 +100,7 @@ class GiphyList extends React.Component {
   }
 
   render() {
-    const { giphyList, selectedImg } = this.state;
+    const { giphyList, selectedImg, busy } = this.state;
 
     return (
       <Main>
@@ -83,6 +111,10 @@ class GiphyList extends React.Component {
             </Item>
           ))}
         </List>
+
+        <BtnWrapper>
+          <Button busy={busy} onClick={this.loadNextPage}>load more</Button>
+        </BtnWrapper>
 
         {selectedImg && (
           <Modal onClose={this.removeSelectedImg} width={selectedImg.images.original.width}>
