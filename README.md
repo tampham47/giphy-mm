@@ -1,3 +1,29 @@
+# Get started
+
+This is a ReactJS test for a position of Senior developer, you can find the requirements [here](/resources/ReactJsTest.pdf). Below is the overview, you can also access to the project at https://giftifymm.netlify.com.
+
+![alt text](/resources/giftifymm.png)
+
+What I have done in this project?
+
+1. Create layout as expected design.
+2. Make the website responsible in 3 screen sizes: mobile, tablet, and desktop.
+3. When the user clicks on each image, the full gif image will be shown.
+4. When the user hovers on each image, the gif image will be loaded.
+5. Add favicon and app icon to make the project fancier.
+6. Create a function that helps the user load more images.
+7. Using styled-components instead of CSS components as default.
+8. Saving data by implementing a function that shows gif on hovering.
+
+Developing is a never-ending job, so for this project, I would like to spend only 8 hours, to see what I can do within a limited time. There are some functions I would like to pay attention to in case I have more time.
+
+1. Using the layout alike Pinterest for this project, because the sizes of each image are so different.
+2. Pay more attention to optimizing the data has been load by this project.
+3. Add more test cases for each components.
+4. I am a fan of server-side rendering, so I would like to do that if needed.
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
