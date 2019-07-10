@@ -12,11 +12,23 @@ const List = styled.div`
   margin-bottom: 2em;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+`;
+const Item = styled.div`
+  width: 50%;
+  @media screen and (min-width: 600px) {
+    width: 33.33%;
+  }
+  @media screen and (min-width: 900px) {
+    width: 25%;
+  }
 `;
 
 const API_ENDPOINT = 'https://api.giphy.com/v1/gifs/trending';
 const API_KEY = 'tBzKvGymEPbzf3aXpKNSZHgh1HloeK8f';
-const ELEMENT_PAGE = 20;
+// 24 is a better number for pagination, cuz it can be devided into 2, 3 or even 4
+// that makes our layout more consistent
+const ELEMENT_PAGE = 24;
 
 const getQueryFromParams = params => {
   let query = '';
@@ -66,7 +78,9 @@ class GiphyList extends React.Component {
       <Main>
         <List>
           {giphyList.map(i => (
-            <GiphyItem key={i.id} setSelectedImg={this.setSelectedImg} model={i} />
+            <Item key={i.id}>
+              <GiphyItem setSelectedImg={this.setSelectedImg} model={i} />
+            </Item>
           ))}
         </List>
 

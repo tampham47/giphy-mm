@@ -2,22 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Main = styled.div`
-  width: ${props => props.size || '200px'};
-  height: ${props => props.size || '200px'};
-  max-width: 200px;
-  max-height: 200px;
-  position: relative;
+  width: 100%;
+  max-height: 250px;
   overflow: hidden;
-
   img {
     width: 100%;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
   }
 `;
-
 
 class GiphyItem extends React.Component {
   constructor(props) {
