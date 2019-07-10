@@ -25,10 +25,11 @@ class GiphyItem extends React.Component {
 
   render() {
     const { model } = this.props;
+    const img = model.images['downsized_still'];
 
     return (
       <Main onClick={this.onClick}>
-        <img src={model.images['480w_still'].url} alt={model.title}/>
+        <img src={img.url} alt={model.title}/>
       </Main>
     );
   }

@@ -31,7 +31,7 @@ const Body = styled.div`
   max-width: calc(100% - 2em);
   min-height: 100px;
   position: relative;
-  top: 45%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid rgba(255,255,255,0.5);;

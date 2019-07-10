@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Modal from './shared/Modal';
 import GiphyItem from './shared/GiphyItem';
 import Button from './shared/Button';
+import GiphyImg from './shared/GiphyImg';
 
 const Main = styled.section`
   margin-top: 2em;
@@ -117,11 +118,10 @@ class GiphyList extends React.Component {
         </BtnWrapper>
 
         {selectedImg && (
-          <Modal onClose={this.removeSelectedImg} width={selectedImg.images.original.width}>
-            <img src={selectedImg.images.original.url} 
-              alt={selectedImg.title}
-              width={selectedImg.images.original.width}
-            />
+          <Modal onClose={this.removeSelectedImg}
+            width={selectedImg.images.original.width}
+          >
+            <GiphyImg model={selectedImg} />
           </Modal>
         )}
       </Main>
