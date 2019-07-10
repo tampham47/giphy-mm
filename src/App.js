@@ -24,6 +24,10 @@ const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
 `;
+const Title = styled.h1`
+  margin-top: 2em;
+  margin-bottom: 2em;
+`;
 const Footer = styled.footer`
   margin-top: 8em;
   margin-bottom: 1em;
@@ -36,11 +40,16 @@ function App() {
     <>
       <GlobalStyle />
       <Container>
+        <Title>GiftifyMM</Title>
+      </Container>
+
+      <Container>
         <GiphyList/>
       </Container>
+      
       <Footer>
         <Container>
-          &copy; giphy-mm
+          &copy; giftifymm
         </Container>
       </Footer>
     </>

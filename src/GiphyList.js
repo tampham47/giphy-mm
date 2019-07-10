@@ -7,9 +7,6 @@ const Main = styled.section`
   margin-top: 2em;
   margin-bottom: 2em;
 `;
-const Title = styled.h1`
-  margin: 0;
-`;
 const List = styled.div`
   margin-top: 2em;
   margin-bottom: 2em;
@@ -67,8 +64,6 @@ class GiphyList extends React.Component {
 
     return (
       <Main>
-        <Title>GiphyMM</Title>
-        
         <List>
           {giphyList.map(i => (
             <GiphyItem key={i.id} setSelectedImg={this.setSelectedImg} model={i} />
