@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import Modal from './Modal';
+import GiphyItem from './GiphyItem';
 
 const Main = styled.section`
   margin-top: 2em;
@@ -15,28 +17,11 @@ const List = styled.div`
   flex-wrap: wrap;
 `;
 
-const GiphyItem = styled.div`
-  width: ${props => props.size || '200px'};
-  height: ${props => props.size || '200px'};
-  max-width: 200px;
-  max-height: 200px;
-  position: relative;
-  overflow: hidden;
-
-  img {
-    width: 100%;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-`;
-
 const API_ENDPOINT = 'https://api.giphy.com/v1/gifs/trending';
 const API_KEY = 'tBzKvGymEPbzf3aXpKNSZHgh1HloeK8f';
 const ELEMENT_PAGE = 20;
 
-const paramToQuery = params => {
+const getQueryFromParams = params => {
   let query = '';
   Object.keys(params).forEach(i => {
     query += `&${i}=${params[i]}`;
@@ -49,7 +34,10 @@ class GiphyList extends React.Component {
     super(props);
     this.state = {
       giphyList: [],
+      selectedImg: null,
     };
+    this.setSelectedImg = this.setSelectedImg.bind(this);
+    this.removeSelectedImg = this.removeSelectedImg.bind(this);
   }
 
   componentDidMount() {
@@ -60,27 +48,41 @@ class GiphyList extends React.Component {
       rating: 'G',
     };
 
-    fetch(`${API_ENDPOINT}?${paramToQuery(payload)}`)
+    fetch(`${API_ENDPOINT}?${getQueryFromParams(payload)}`)
       .then(res => res.json())
       .then(body => {
-        console.log('data', body.data);
         this.setState({ giphyList: body.data });
       });
   }
 
+  setSelectedImg(giphy) {
+    this.setState({ selectedImg: giphy });
+  }
+  removeSelectedImg() {
+    this.setState({ selectedImg: null });
+  }
+
   render() {
-    const { giphyList } = this.state;
+    const { giphyList, selectedImg } = this.state;
 
     return (
       <Main>
         <Title>GiphyMM</Title>
+        
         <List>
           {giphyList.map(i => (
-            <GiphyItem key={i.id}>
-              <img src={i.images['480w_still'].url} alt={i.title}/>
-            </GiphyItem>
+            <GiphyItem key={i.id} setSelectedImg={this.setSelectedImg} model={i} />
           ))}
         </List>
+
+        {selectedImg && (
+          <Modal onClose={this.removeSelectedImg} width={selectedImg.images.original.width}>
+            <img src={selectedImg.images.original.url} 
+              alt={selectedImg.title}
+              width={selectedImg.images.original.width}
+            />
+          </Modal>
+        )}
       </Main>
     );
   }

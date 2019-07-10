@@ -24,6 +24,12 @@ const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
 `;
+const Footer = styled.footer`
+  margin-top: 8em;
+  margin-bottom: 1em;
+  text-align: center;
+  opacity: 0.8;
+`;
 
 function App() {
   return (
@@ -32,6 +38,11 @@ function App() {
       <Container>
         <GiphyList/>
       </Container>
+      <Footer>
+        <Container>
+          &copy; giphy-mm
+        </Container>
+      </Footer>
     </>
   );
 }
