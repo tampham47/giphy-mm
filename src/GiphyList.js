@@ -4,6 +4,7 @@ import Modal from './shared/Modal';
 import GiphyItem from './shared/GiphyItem';
 import Button from './shared/Button';
 import GiphyImg from './shared/GiphyImg';
+import { ReactComponent as Loading } from './imgs/fruit.svg';
 
 const Main = styled.section`
   margin-top: 2em;
@@ -25,8 +26,9 @@ const Item = styled.div`
     width: 25%;
   }
 `;
-const BtnWrapper = styled.div`
+const CenterWrapper = styled.div`
   text-align: center;
+  width: 100%;
 `;
 
 const API_ENDPOINT = 'https://api.giphy.com/v1/gifs/trending';
@@ -106,6 +108,11 @@ class GiphyList extends React.Component {
     return (
       <Main>
         <List>
+          {!giphyList.length && (
+            <CenterWrapper>
+              <Loading width="50" height="50" />
+            </CenterWrapper>
+          )}
           {giphyList.map(i => (
             <Item key={i.id}>
               <GiphyItem setSelectedImg={this.setSelectedImg} model={i} />
@@ -113,9 +120,11 @@ class GiphyList extends React.Component {
           ))}
         </List>
 
-        <BtnWrapper>
-          <Button busy={busy} onClick={this.loadNextPage}>load more</Button>
-        </BtnWrapper>
+        {!!giphyList.length && (
+          <CenterWrapper>
+            <Button busy={busy} onClick={this.loadNextPage}>load more</Button>
+          </CenterWrapper>
+        )}
 
         {selectedImg && (
           <Modal onClose={this.removeSelectedImg}
