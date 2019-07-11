@@ -15,15 +15,20 @@ const List = styled.div`
   margin-bottom: 2em;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: stretch;
+  align-content: stretch;
+  justify-content: space-between;
 `;
 const Item = styled.div`
-  width: 50%;
+  width: calc(50% - 6px);
+  margin-bottom: 12px;
+  height: 100%;
+  position: relative;
   @media screen and (min-width: 600px) {
-    width: 33.33%;
+    width: calc(33.33% - 12px);
   }
-  @media screen and (min-width: 900px) {
-    width: 25%;
+  @media screen and (min-width: 1040px) {
+    width: calc(25% - 12px);
   }
 `;
 const CenterWrapper = styled.div`

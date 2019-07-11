@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Container = styled.div`
-  max-width: 56em;
+  max-width: 65em;
   width: calc(100% - 2em);
   margin-left: auto;
   margin-right: auto;
