@@ -1,6 +1,6 @@
 # Get started
 
-This is a ReactJS test for a position of Senior developer, you can find the requirements [here](/resources/ReactJsTest.pdf). Below is the overview, you can also access to the project at https://giftifymm.netlify.com.
+This is the overview of the project, you can also access to the project at https://giftifymm.netlify.com as well.
 
 ![alt text](/resources/giftifymm.png)
 
